@@ -1,15 +1,10 @@
-package avito.screentest;
+package screentest;
 
-import com.google.common.io.Files;
 import lombok.Getter;
-import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.io.File;
-import java.io.IOException;
 
 @Getter
 public class EcoImpactPage {
@@ -31,15 +26,5 @@ public class EcoImpactPage {
     public EcoImpactPage(WebDriver driver) {
         driver.get(ECO_IMPACT_URL);
         PageFactory.initElements(driver, this);
-    }
-
-    public static void takeScreenshot(WebElement webElement, String testName) {
-        File screenshot = webElement.getScreenshotAs(OutputType.FILE);
-        try {
-            String fileName = String.format(".//output//%s.png", testName);
-            Files.copy(screenshot, new File(fileName));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
